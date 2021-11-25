@@ -14,20 +14,20 @@ namespace Exercise05
             Random rnd = new Random();
             int randomNumber = rnd.Next(1, 101);
 
-            Console.WriteLine("Guess a randomly generated whole number from 1 to 100 and enter it here: ");
+            Console.WriteLine("I'm thinking of a number between 1-100.  Try to guess it: ");
             int inputNumber = Convert.ToInt32(Console.ReadLine());
 
             if (inputNumber == randomNumber)
             {
-                Console.WriteLine("You guessed it right!");
+                Console.WriteLine("You guessed it!  What are the odds?!?");
             }
             else if (inputNumber > randomNumber)
             {
-                Console.WriteLine("Too high.");
+                Console.WriteLine($"Sorry, you are too high. I was thinking of {randomNumber}.");
             }
             else
             {
-                Console.WriteLine("Too low.");
+                Console.WriteLine($"Sorry, you are too low. I was thinking of {randomNumber}.");
             }
         }
     }
