@@ -6,14 +6,6 @@ namespace Exercise08
     {
         static void Main(string[] args)
         {
-            /* Foo Corporation needs a program to calculate how much to pay their hourly employees.
-             * The US Department of Labor requires that employees get paid time and a half for any hours over 40 that they work in a single week.
-             * For example, if an employee works 45 hours, they get 5 hours of overtime, at 1.5 times their base pay.
-             * The State of Massachusetts requires that hourly employees be paid at least $8.00 an hour. Foo Corp requires that an employee not work more than 60 hours in a week.
-             */
-
-            
-
             static string TotalPay(double basePay, decimal hoursWorked)
             {
                 decimal basePayDec = Convert.ToDecimal(basePay);
@@ -39,13 +31,9 @@ namespace Exercise08
                 }
             }         
 
-            TotalPay(7.50, 35);
-            TotalPay(8.20, 47);
-            TotalPay(10.00, 73);
             Console.WriteLine("Employee 1" + TotalPay(7.50, 35));
             Console.WriteLine("Employee 2" + TotalPay(8.20, 47));
             Console.WriteLine("Employee 3" + TotalPay(10.00, 73));
-
         }
     }
 }
