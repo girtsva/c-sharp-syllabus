@@ -28,11 +28,6 @@ namespace Exercise08
                 minutesToYears = Math.Round(minutesToYears, 6);
                 Console.WriteLine($"\nYour entered number of minutes is {minutesToYears} years or {minutesToDays} days.");
             }
-
-         
-
-
-
         }
     }
 }
