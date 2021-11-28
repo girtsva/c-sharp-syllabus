@@ -11,9 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SadFor", "SadFor\SadFor.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VariablesAndNames", "VariablesAndNames\VariablesAndNames.csproj", "{38CD71E6-6995-4D0D-A781-B4202B40BFB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise04", "Exercise04\Exercise04.csproj", "{125C6C93-B1D7-4227-9CAF-15436BE9B42E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercise04", "Exercise04\Exercise04.csproj", "{125C6C93-B1D7-4227-9CAF-15436BE9B42E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise05", "Exercise05\Exercise05.csproj", "{BB6986B8-6B05-450E-AF99-A51F3045188B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercise05", "Exercise05\Exercise05.csproj", "{BB6986B8-6B05-450E-AF99-A51F3045188B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise06", "Exercise06\Exercise06.csproj", "{EBAD93AE-ACE5-46A4-947C-1471DC57D94E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{BB6986B8-6B05-450E-AF99-A51F3045188B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB6986B8-6B05-450E-AF99-A51F3045188B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB6986B8-6B05-450E-AF99-A51F3045188B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBAD93AE-ACE5-46A4-947C-1471DC57D94E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBAD93AE-ACE5-46A4-947C-1471DC57D94E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBAD93AE-ACE5-46A4-947C-1471DC57D94E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBAD93AE-ACE5-46A4-947C-1471DC57D94E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
