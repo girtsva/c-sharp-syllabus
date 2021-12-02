@@ -15,14 +15,7 @@ namespace Exercise01
                         
             bool CheckFifteen(int firstInt, int secondInt)
             {
-                if(firstInt == 15 || secondInt == 15 || firstInt + secondInt == 15 || firstInt - secondInt == 15 || secondInt - firstInt == 15)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return firstInt == 15 || secondInt == 15 || firstInt + secondInt == 15 || firstInt - secondInt == 15 || secondInt - firstInt == 15;
             }
 
             Console.WriteLine(CheckFifteen(firstInt, secondInt));
