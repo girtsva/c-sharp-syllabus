@@ -7,7 +7,12 @@ namespace Exercise8
     {
         static void Main(string[] args)
         {
-            string[] treeNames = {"Apple tree", "Birch", "Cedar", "Cypress", "Eucalyptus", "Hazel", "Juniper", "Maple", "Oak", "Pine", "Willow"};
+            PlayGame();
+        }
+
+        public static void PlayGame()
+        {
+            string[] treeNames = { "Apple tree", "Birch", "Cedar", "Cypress", "Eucalyptus", "Hazel", "Juniper", "Maple", "Oak", "Pine", "Willow" };
 
             var rnd = new Random();
 
@@ -15,24 +20,19 @@ namespace Exercise8
 
             var wordToGuess = new string('_', word.Length);
             //string wordToGuess = new StringBuilder("_ ".Length * word.Length).Insert(0, "_ ", word.Length).ToString();
-            //Console.WriteLine(str);
+            //Console.WriteLine(wordToGuess);
             var misses = string.Empty;
             while (!HasGuessed(wordToGuess) && !LimitOfTriesReached(misses))
             {
-                Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-                Console.WriteLine();
-                Console.WriteLine($"Word: {wordToGuess}");
-                Console.WriteLine();
-                Console.WriteLine($"Misses: {misses}");
-                Console.WriteLine();
+                PrintWordAndMisses(wordToGuess, misses);
+
                 Console.Write("Guess: ");
                 var guess = (Console.ReadKey()).KeyChar;
                 Console.WriteLine();
                 Console.WriteLine();
                 //Console.WriteLine($"Guess: {guess}");
 
-                
-                
+                //CheckIfGuessed(word, guess, wordToGuess, misses);
 
                 if (WordContains(word, guess))
                 {
@@ -50,48 +50,9 @@ namespace Exercise8
                 {
                     misses += guess;
                 }
-
-
             }
 
-            if(LimitOfTriesReached(misses))
-            {
-                Console.WriteLine("Five unsuccesful tries reached!");     // principa var to pasu apvienot ar HasGuessed - izdrukat tas pasas rindas, tikai cits message (varbut switch ielikt?), bet ari piedava play again or quit
-                Console.WriteLine("GAME OVER!");
-                //GameEndChoice();
-            }
-
-            if (HasGuessed(wordToGuess))
-            {
-                Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-                Console.WriteLine();
-                Console.WriteLine($"Word: {wordToGuess}");
-                Console.WriteLine();
-                Console.WriteLine($"Misses: {misses}");
-                Console.WriteLine();
-
-                Console.WriteLine("YOU GOT IT!");
-                
-                string gameEndChoice;
-
-                do
-                {
-                    Console.Write("Play \"again\" or \"quit\"? ");
-                    gameEndChoice = Console.ReadLine();
-
-                    if (gameEndChoice == "again")
-                    {
-                        Console.Clear(); // check vai strada korekti - pagaidam liekas, ka console.clear nodzesh ari gameEndChoice vertibu 'again' un liek vienalga ievadit kaut ko
-                        //PlayGame();
-                    }
-                    else if (gameEndChoice == "quit")
-                    {
-                        Environment.Exit(0);
-                    }
-
-                } while (gameEndChoice != "again" || gameEndChoice != "quit");
-            }
-
+            IsGameOver(word, wordToGuess, misses);
         }
 
         public static bool WordContains(string word, char guess)
@@ -107,6 +68,79 @@ namespace Exercise8
         public static bool LimitOfTriesReached(string misses)
         {
             return misses.Length == 5;
+        }
+
+        public static void PrintWordAndMisses(string wordToGuess, string misses)
+        {
+            Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+            Console.WriteLine();
+            Console.WriteLine($"Word: {wordToGuess}");
+            Console.WriteLine();
+            Console.WriteLine($"Misses: {misses}");
+            Console.WriteLine();
+        }
+
+        public static void GameEndChoice()
+        {
+            string gameEndChoice;
+
+            do
+            {
+                Console.Write("Play \"again\" or \"quit\"? ");
+                gameEndChoice = Console.ReadLine();
+
+                if (gameEndChoice == "again")
+                {
+                    Console.Clear();
+                    gameEndChoice = "again";
+                    PlayGame();
+                }
+                else if (gameEndChoice == "quit")
+                {
+                    Environment.Exit(0);
+                }
+
+            } while (gameEndChoice != "again" || gameEndChoice != "quit");
+        }
+
+        public static void IsGameOver(string word, string wordToGuess, string misses)
+        {
+            PrintWordAndMisses(wordToGuess, misses);
+
+            if (LimitOfTriesReached(misses))
+            {
+                Console.WriteLine($"Five unsuccesful tries reached! The word you did not guess was \"{word}\"");
+            }
+            else if (HasGuessed(wordToGuess))
+            {
+                Console.WriteLine("YOU GOT IT!");
+            }
+
+            Console.WriteLine("GAME OVER!");
+
+            GameEndChoice();
+        }
+
+        public static void CheckIfGuessed(string word, char guess, string wordToGuess, string misses)
+        {
+            if (WordContains(word, guess))
+            {
+                for (int i = 0; i < word.Length; i++)
+                {
+                    if (word.ToLower()[i] == guess)
+                    {
+                        var sb = new StringBuilder(wordToGuess);
+                        sb[i] = word[i];
+                        wordToGuess = sb.ToString();
+                    }
+                }
+                //Console.WriteLine(wordToGuess);//return wordToGuess;
+            }
+            else
+            {
+                misses += guess;
+                //Console.WriteLine(misses);// return misses;
+            }
         }
     }
 }
