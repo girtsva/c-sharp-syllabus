@@ -11,18 +11,15 @@ namespace TenBillion
 
             var input = Console.ReadLine();
 
-            //todo - check if Long
             long n;
             if (long.TryParse(input, out n)) 
             {
-                //todo - check if n is less than zero
                 if (n < 0) 
                 {
                     Console.WriteLine($"The entered number {n} is less than zero, converting it to positive number automatically...");
                     n *= -1;
                 }
 
-                //fixme
                 if (n >= 10000000000) 
                 {
                     Console.WriteLine("Number is greater or equals 10,000,000,000!");
