@@ -15,50 +15,27 @@ namespace Exercise8
             string[] treeNames = { "Apple tree", "Birch", "Cedar", "Cypress", "Eucalyptus", "Hazel", "Juniper", "Maple", "Oak", "Pine", "Willow" };
 
             var rnd = new Random();
-
             var word = treeNames[rnd.Next(0, treeNames.Length)];
 
-            var wordToGuess = new string('_', word.Length);
-            //string wordToGuess = new StringBuilder("_ ".Length * word.Length).Insert(0, "_ ", word.Length).ToString();
-            //Console.WriteLine(wordToGuess);
-            var misses = string.Empty;
-            while (!HasGuessed(wordToGuess) && !LimitOfTriesReached(misses))
+            var result = new GuessOutput();
+            result.WordToGuess = new string('_', word.Length);
+            result.Misses = string.Empty;
+
+            while (!HasGuessed(result.WordToGuess) && !LimitOfTriesReached(result.Misses))
             {
-                PrintWordAndMisses(wordToGuess, misses);
+                PrintWordAndMisses(result.WordToGuess, result.Misses);
 
                 Console.Write("Guess: ");
                 var guess = (Console.ReadKey()).KeyChar;
                 Console.WriteLine();
                 Console.WriteLine();
-                //Console.WriteLine($"Guess: {guess}");
 
-                //CheckIfGuessed(word, guess, wordToGuess, misses);
+                CheckIfGuessed(word, guess, result);
 
-                if (WordContains(word, guess))
-                {
-                    for (int i = 0; i < word.Length; i++)
-                    {
-                        if (word.ToLower()[i] == guess)
-                        {
-                            var sb = new StringBuilder(wordToGuess);
-                            sb[i] = word[i];
-                            wordToGuess = sb.ToString();
-                        }
-                    }
-                }
-                else
-                {
-                    misses += guess;
-                }
             }
 
-            IsGameOver(word, wordToGuess, misses);
-        }
-
-        public static bool WordContains(string word, char guess)
-        {
-            return word.ToLower().IndexOf(guess) > -1;
-        }
+            IsGameOver(word, result);
+        } 
 
         public static bool HasGuessed(string wordToGuess)
         {
@@ -78,6 +55,49 @@ namespace Exercise8
             Console.WriteLine();
             Console.WriteLine($"Misses: {misses}");
             Console.WriteLine();
+        }
+
+        public static void CheckIfGuessed(string word, char guess, GuessOutput result)
+        {
+            if (WordContains(word, guess))
+            {
+                for (int i = 0; i < word.Length; i++)
+                {
+                    if (word.ToLower()[i] == guess)
+                    {
+                        var sb = new StringBuilder(result.WordToGuess);
+                        sb[i] = word[i];
+                        result.WordToGuess = sb.ToString();
+                    }
+                }
+            }
+            else
+            {
+                result.Misses += guess;
+            }
+        }
+
+        public static bool WordContains(string word, char guess)
+        {
+            return word.ToLower().IndexOf(guess) > -1;
+        }
+
+        public static void IsGameOver(string word, GuessOutput result)
+        {
+            PrintWordAndMisses(result.WordToGuess, result.Misses);
+
+            if (LimitOfTriesReached(result.Misses))
+            {
+                Console.WriteLine($"\nFive unsuccesful tries reached! The word you did not guess was \"{word}\"\n");
+            }
+            else if (HasGuessed(result.WordToGuess))
+            {
+                Console.WriteLine("\nYOU GOT IT!\n");
+            }
+
+            Console.WriteLine("GAME OVER!\n");
+
+            GameEndChoice();
         }
 
         public static void GameEndChoice()
@@ -102,45 +122,11 @@ namespace Exercise8
 
             } while (gameEndChoice != "again" || gameEndChoice != "quit");
         }
+    }
 
-        public static void IsGameOver(string word, string wordToGuess, string misses)
-        {
-            PrintWordAndMisses(wordToGuess, misses);
-
-            if (LimitOfTriesReached(misses))
-            {
-                Console.WriteLine($"Five unsuccesful tries reached! The word you did not guess was \"{word}\"");
-            }
-            else if (HasGuessed(wordToGuess))
-            {
-                Console.WriteLine("YOU GOT IT!");
-            }
-
-            Console.WriteLine("GAME OVER!");
-
-            GameEndChoice();
-        }
-
-        public static void CheckIfGuessed(string word, char guess, string wordToGuess, string misses)
-        {
-            if (WordContains(word, guess))
-            {
-                for (int i = 0; i < word.Length; i++)
-                {
-                    if (word.ToLower()[i] == guess)
-                    {
-                        var sb = new StringBuilder(wordToGuess);
-                        sb[i] = word[i];
-                        wordToGuess = sb.ToString();
-                    }
-                }
-                //Console.WriteLine(wordToGuess);//return wordToGuess;
-            }
-            else
-            {
-                misses += guess;
-                //Console.WriteLine(misses);// return misses;
-            }
-        }
+    public class GuessOutput
+    {
+        public string WordToGuess { get; set; }
+        public string Misses { get; set; }
     }
 }
