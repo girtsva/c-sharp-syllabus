@@ -33,13 +33,13 @@ namespace TicTacToe
                 MakeAMove(players, playerTurnName);
                 Console.Clear();
                 DisplayBoard();
-                if (IsGameOver(players) == 1)
+                if (IsGameOver(playerTurnName))
                 {
                     GameOverChoice();
                     break;
                 }
                 player1Turn = !player1Turn;
-            } while (IsGameOver(players) == 0);
+            } while (!IsGameOver(playerTurnName));
 
             Console.ReadKey();
         }
@@ -118,88 +118,55 @@ namespace TicTacToe
 
         private static char DrawsXorO(string[] players, string player)
         {
-            if (player == players[0])
-            {
-                return 'X';
-            }
-            else
-            {
-                return 'O';
-            }
+            return player == players[0] ? 'X' : 'O';
         }
 
-        private static int IsGameOver(string[] players)
+        private static bool IsGameOver(string playerTurnName)
         {
-            if (HasPlayerWon() == 'X')
+            if (HasPlayerWon())
             {
-                Console.WriteLine($"Congratulations! {players[0]} has won!");
-                return 1;
-            }
-            else if (HasPlayerWon() == 'O')
-            {
-                Console.WriteLine($"Congratulations! {players[1]} has won!");
-                return 1;
+                Console.WriteLine($"Congratulations! {playerTurnName} has won!");
+                return true;
             }
             else if (IsDraw())
             {
                 Console.WriteLine("The game is a tie!");
-                return 1;
+                return true;
             }
             else
             {
-                return 0;
+                return false;
             }
         }
 
-        private static char HasPlayerWon()
+        private static bool HasPlayerWon()
         {
-            if (board[0, 0] != ' ' && board[0, 0] == board[0, 1] && board[0, 1] == board[0, 2])
+            if (board[1, 1] != ' ' && board[1, 1] == board[1, 0] && board[1, 1] == board[1, 2] ||
+                board[1, 1] != ' ' && board[1, 1] == board[0, 1] && board[1, 1] == board[2, 1] ||
+                board[1, 1] != ' ' && board[1, 1] == board[0, 0] && board[1, 1] == board[2, 2] ||
+                board[1, 1] != ' ' && board[1, 1] == board[2, 0] && board[1, 1] == board[0, 2])
             {
-                return board[0, 0];
-            } 
-            else if (board[1, 0] != ' ' && board[1, 0] == board[1, 1] && board[1, 1] == board[1, 2])
-            {
-                return board[1, 0];
+                return true;
             }
-            else if (board[2, 0] != ' ' && board[2, 0] == board[2, 1] && board[2, 1] == board[2, 2])
+            else if (board[0, 0] != ' ' && board[0, 0] == board[0, 1] && board[0, 1] == board[0, 2] ||
+                     board[0, 0] != ' ' && board[0, 0] == board[1, 0] && board[1, 0] == board[2, 0])
             {
-                return board[2, 0];
+                return true;
             }
-            else if (board[0, 0] != ' ' && board[0, 0] == board[1, 0] && board[1, 0] == board[2, 0])
+            
+            else if (board[2, 2] != ' ' && board[2, 2] == board[2, 0] && board[2, 2] == board[2, 1] ||
+                     board[2, 2] != ' ' && board[2, 2] == board[0, 2] && board[2, 2] == board[1, 2])
             {
-                return board[0, 0];
+                return true;
             }
-            else if (board[0, 1] != ' ' && board[0, 1] == board[1, 1] && board[1, 1] == board[2, 1])
-            {
-                return board[0, 1];
-            }
-            else if (board[0, 2] != ' ' && board[0, 2] == board[1, 2] && board[1, 2] == board[2, 2])
-            {
-                return board[0, 2];
-            }
-            else if (board[0, 0] != ' ' && board[0, 0] == board[1, 1] && board[1, 1] == board[2, 2])
-            {
-                return board[0, 0];
-            }
-            else if (board[0, 2] != ' ' && board[0, 2] == board[1, 1] && board[1, 1] == board[2, 0])
-            {
-                return board[0, 2];
-            }
-            else
-            {
-                return ' ';
-            }
+            return false;
         }
 
         private static bool IsDraw()
         {
-            if (board[0, 0] != ' ' && board[0, 1] != ' ' && board[0, 2] != ' ' &&
-                board[1, 0] != ' ' && board[1, 1] != ' ' && board[1, 2] != ' ' &&
-                board[2, 0] != ' ' && board[2, 1] != ' ' && board[2, 2] != ' ')
-                {
-                return true;
-            }
-            return false;
+            return (board[0, 0] != ' ' && board[0, 1] != ' ' && board[0, 2] != ' ' &&
+                    board[1, 0] != ' ' && board[1, 1] != ' ' && board[1, 2] != ' ' &&
+                    board[2, 0] != ' ' && board[2, 1] != ' ' && board[2, 2] != ' ');
         }
 
         private static void GameOverChoice()
