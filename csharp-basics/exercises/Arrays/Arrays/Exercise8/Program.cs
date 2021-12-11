@@ -59,7 +59,7 @@ namespace Exercise8
 
         public static void CheckIfGuessed(string word, char guess, GuessOutput result)
         {
-            if (WordContains(word, guess))
+            if (WordContainsLetter(word, guess))
             {
                 for (int i = 0; i < word.Length; i++)
                 {
@@ -77,7 +77,7 @@ namespace Exercise8
             }
         }
 
-        public static bool WordContains(string word, char guess)
+        public static bool WordContainsLetter(string word, char guess)
         {
             return word.ToLower().IndexOf(guess) > -1;
         }
