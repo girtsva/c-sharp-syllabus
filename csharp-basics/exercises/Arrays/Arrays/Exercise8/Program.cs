@@ -31,7 +31,6 @@ namespace Exercise8
                 Console.WriteLine();
 
                 CheckIfGuessed(word, guess, result);
-
             }
 
             IsGameOver(word, result);
