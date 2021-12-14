@@ -15,7 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoStore", "VideoStore\Vi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercise01", "Exercise01\Exercise01.csproj", "{6B03A1E3-727B-4793-98E9-46824DF855D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise03", "Exercise03\Exercise03.csproj", "{0512DA13-D879-4CA1-BDB1-F133D95ECDBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercise03", "Exercise03\Exercise03.csproj", "{0512DA13-D879-4CA1-BDB1-F133D95ECDBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise04", "Exercise04\Exercise04.csproj", "{1106863A-33A5-4E51-91CD-CABCD883CE84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{0512DA13-D879-4CA1-BDB1-F133D95ECDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0512DA13-D879-4CA1-BDB1-F133D95ECDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0512DA13-D879-4CA1-BDB1-F133D95ECDBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1106863A-33A5-4E51-91CD-CABCD883CE84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1106863A-33A5-4E51-91CD-CABCD883CE84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1106863A-33A5-4E51-91CD-CABCD883CE84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1106863A-33A5-4E51-91CD-CABCD883CE84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
