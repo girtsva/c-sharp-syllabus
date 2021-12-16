@@ -19,7 +19,8 @@ namespace VideoStore
                 Console.WriteLine("Choose 1 to fill video store");
                 Console.WriteLine("Choose 2 to rent video (as user)");
                 Console.WriteLine("Choose 3 to return video (as user)");
-                Console.WriteLine("Choose 4 to list inventory");
+                Console.WriteLine("Choose 4 to leave a rating (as user)");
+                Console.WriteLine("Choose 5 to list inventory");
 
                 int n = Convert.ToByte(Console.ReadLine());
 
@@ -37,6 +38,9 @@ namespace VideoStore
                         ReturnVideo();
                         break;
                     case 4:
+                        LeaveRating();
+                        break;
+                    case 5:
                         ListInventory();
                         break;
                     default:
@@ -54,29 +58,45 @@ namespace VideoStore
         {
             for (var i = 0; i < _countOfMovies; i++)
             {
-                Console.WriteLine("Enter movie name");
-                string movieName = Console.ReadLine();
-
-                Console.WriteLine("Enter rating");
-                int rating = Convert.ToInt16(Console.ReadLine());
-
+                string movieName = EnterMovie();
                 _videoStore.AddVideo(movieName);
+
+                int rating = LeaveRating(movieName);
                 _videoStore.TakeUsersRating(rating, movieName);
             }
         }
 
         private static void RentVideo()
         {
-            Console.WriteLine("Enter movie name");
-            string movieName = Console.ReadLine();
-            _videoStore.Checkout(movieName);
+            _videoStore.Checkout(EnterMovie());
         }
 
         private static void ReturnVideo()
         {
-            Console.WriteLine("Enter movie name");
+            _videoStore.ReturnVideo(EnterMovie());
+        }
+
+        private static string EnterMovie()
+        {
+            Console.Write("Enter movie name: ");
             string movieName = Console.ReadLine();
-            _videoStore.ReturnVideo(movieName);
+            return movieName;
+        }
+
+        private static void LeaveRating()
+        {
+            string movieName = EnterMovie();
+            Console.Write("Enter rating: ");
+            int rating = Convert.ToInt16(Console.ReadLine());
+            _videoStore.TakeUsersRating(rating, movieName);
+        }
+
+        private static int LeaveRating(string movieName)
+        {
+            Console.Write("Enter rating: ");
+            int rating = Convert.ToInt16(Console.ReadLine());
+            _videoStore.TakeUsersRating(rating, movieName);
+            return rating;
         }
     }
 }
