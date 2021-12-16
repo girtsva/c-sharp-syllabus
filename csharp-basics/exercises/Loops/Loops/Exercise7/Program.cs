@@ -27,24 +27,24 @@ namespace Exercise7
                     char rollChoice;
                     do
                     {
-                    Console.Write("Roll again? (y/n) ");
-                    rollChoice = Console.ReadKey().KeyChar;
-                    Console.WriteLine();
+                        Console.Write("Roll again? (y/n) ");
+                        rollChoice = Console.ReadKey().KeyChar;
+                        Console.WriteLine();
 
-                    if (rollChoice == 'y')
-                    {
-                        endGame = false;
-                        break;
-                    }
-                    else if (rollChoice == 'n')
-                    {
-                        endGame = EndGame(points);
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Incorrect input!");
-                    }
+                        if (rollChoice == 'y')
+                        {
+                            endGame = false;
+                            break;
+                        }
+                        else if (rollChoice == 'n')
+                        {
+                            endGame = EndGame(points);
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect input!");
+                        }
                     } while (true);
                 }
 
