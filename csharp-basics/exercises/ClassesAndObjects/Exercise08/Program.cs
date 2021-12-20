@@ -6,8 +6,6 @@ namespace Exercise08
     {
         static void Main(string[] args)
         {
-            
-            
             Console.Write("How much money is in the account? ");
             SavingsAccount account001 = new SavingsAccount(Convert.ToDecimal(Console.ReadLine()));
             Console.Write("Enter the annual interest rate: ");
