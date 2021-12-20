@@ -10,11 +10,17 @@ namespace Exercise2
             
             Console.WriteLine("Input number of terms : ");
             n = Convert.ToInt32(Console.ReadLine());
-            /*
-            todo - complete loop to multiply i with itself n times, it is NOT allowed to use Math.Pow()
-            */
+
             for (i = 0; i < n; i++)
             {
+                double result = 1;
+
+                for (int j = 0; j < n; j++)
+                {
+                    result = i * result;
+                }
+
+                Console.WriteLine($"{i} multiplied with itself {n} times or {i}^{n} is {result}");
             }
 
             Console.ReadKey();
