@@ -19,17 +19,41 @@ namespace VideoStore
         
         public void Checkout(string title)
         {
-            GetVideo(title).BeingCheckedOut();
+            var video = GetVideo(title);
+            if (video != null)
+            {
+                video.BeingCheckedOut();
+            }
+            else
+            {
+                return;
+            }
         }
 
         public void ReturnVideo(string title)
         {
-            GetVideo(title).BeingReturned();
+            var video = GetVideo(title);
+            if (video != null)
+            {
+                video.BeingReturned();
+            }
+            else
+            {
+                return;
+            }
         }
 
         public void TakeUsersRating(double rating, string title)
         {
-            GetVideo(title).ReceivingRating(rating);
+            var video = GetVideo(title);
+            if (video != null && rating != 0)
+            {
+                video.ReceivingRating(rating);
+            }
+            else
+            {
+                return;
+            }
         }
 
         public void ListInventory()
@@ -53,7 +77,8 @@ namespace VideoStore
                     return video;
                 }
             }
-            return null;  // console.writeline ielikt pirms tam, ka neatrada tadu???
+            Console.WriteLine("Video not found!");
+            return null;
         }
     }
 }

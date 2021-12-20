@@ -61,8 +61,7 @@ namespace VideoStore
                 string movieName = EnterMovie();
                 _videoStore.AddVideo(movieName);
 
-                int rating = LeaveRating(movieName);
-                _videoStore.TakeUsersRating(rating, movieName);
+                LeaveRating(movieName);
             }
         }
 
@@ -87,14 +86,20 @@ namespace VideoStore
         {
             string movieName = EnterMovie();
             Console.Write("Enter rating: ");
-            int rating = Convert.ToInt16(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out int rating))
+            {
+                Console.WriteLine("Invalid rating entered!");
+            }
             _videoStore.TakeUsersRating(rating, movieName);
         }
 
         private static int LeaveRating(string movieName)
         {
             Console.Write("Enter rating: ");
-            int rating = Convert.ToInt16(Console.ReadLine());
+            if (!int.TryParse(Console.ReadLine(), out int rating))
+            {
+                Console.WriteLine("Invalid rating entered!");
+            }
             _videoStore.TakeUsersRating(rating, movieName);
             return rating;
         }
