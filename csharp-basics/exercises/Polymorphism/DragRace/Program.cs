@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DragRace
 {
@@ -16,9 +18,50 @@ namespace DragRace
  * 6. Print out the car name and speed of the fastest car
  */
 
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            
+            var cars = new List<ICar>();
+            cars.Add(new Audi());
+            cars.Add(new Bmw());
+            cars.Add(new Lexus());
+            cars.Add(new Subaru());
+            cars.Add(new Tesla());
+            cars.Add(new Toyota());
+
+            for (int i = 1; i <= 10; i++)
+            {
+                foreach (var car in cars)
+                {
+                    if (i == 1)
+                    {
+                        car.StartEngine();
+                    }
+
+                    if (i == 3 && car is IBoostable boostable)
+                    {
+                        boostable.UseNitrousOxideEngine();
+                    }
+
+                    car.SpeedUp();
+                }
+            }
+
+            Console.WriteLine();
+            var fastestSpeed = cars.Max(car => car.ShowCurrentSpeed());
+            var fastestCar = "";
+
+            foreach (var car in cars)
+            {
+                Console.WriteLine($"{car.GetType().Name, -7} {car.ShowCurrentSpeed()} km/h");
+
+                if (car.ShowCurrentSpeed() == fastestSpeed)
+                {
+                    fastestCar = car.GetType().Name;
+                }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine($"{fastestCar} is the fastest car having reached speed {fastestSpeed} km/h");
         }
     }
 }
