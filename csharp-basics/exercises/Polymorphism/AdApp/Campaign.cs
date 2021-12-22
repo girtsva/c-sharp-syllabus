@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -5,26 +6,38 @@ namespace AdApp
 {
     public class Campaign
     {
-        private List<Advert> campaign;
+        private List<Advert> _campaign;
 
         public Campaign() 
         {
-            campaign = new List<Advert>();
+            _campaign = new List<Advert>();
         }
 
         public void AddAdvert(Advert a) 
         {
-            campaign.Add(a);
+            _campaign.Add(a);
         }
 
-        public int GetCost()
+        public double GetCost()
         {
-            return campaign.Sum(item => item.Cost());
+            return _campaign.Sum(item => item.Cost());
         }
 
         public override string ToString()
         {
-            return "Advert Campaign" + campaign + "\nTotal Cost = "+ GetCost();
+            string specifier = "$#,#0.00";
+
+            var result = "Advert Campaign Costs:\n";
+            result += ("------------------------\n");
+
+            foreach (var advert in _campaign)
+            {
+                result += advert.ToString() + "\n";
+            }
+
+            result += "------------------------\n";
+            result += $"Total:      {GetCost().ToString(specifier),11}";
+            return result;
         }
     }
 }

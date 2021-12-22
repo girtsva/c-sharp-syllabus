@@ -2,31 +2,32 @@ namespace AdApp
 {
     public class Advert
     {
-        private int _fee;
+        private double _fee;
 
         public Advert() 
         {
             _fee = 0;
         }
 
-        public Advert(int fee) 
+        public Advert(double fee) 
         {
             _fee = fee;
         }
 
-        public void SetFee(int fee) 
+        public void SetFee(double fee) 
         {
             _fee = fee;
         }
 
-        public int Cost() 
+        public virtual double Cost() 
         {
             return _fee;
         }
 
         public override string ToString() 
         {
-            return "\nAdvert: Fee=" + _fee;
+            string specifier = "$#,#0.00";
+            return $"Advert:     {Cost().ToString(specifier),11}";
         }
     }
 }
