@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlightPlanner
 {
@@ -34,72 +32,67 @@ namespace FlightPlanner
             Console.WriteLine();
             Console.WriteLine();
 
-            switch (userChoice)
+            if (userChoice == '1')
             {
-                case '1':
-                    foreach (var city in departureCities)
-                    {
-                        Console.WriteLine("- " + city);
-                    }
-                    Console.WriteLine();
+                foreach (var city in departureCities)
+                {
+                    Console.WriteLine("- " + city);
+                }
+                Console.WriteLine();
 
-                    var route = new List<string>();
-                    string startingCity = "";
-                    string destinationCity;
+                var route = new List<string>();
+                string startingCity = "";
+                string destinationCity;
 
-                    while (!departureCities.Contains(startingCity))
-                    {
-                        Console.WriteLine("Enter a city from which you would like to start:");
-                        startingCity = Console.ReadLine();
-                        route.Add(startingCity);
-                    }
+                while (!departureCities.Contains(startingCity))
+                {
+                    Console.WriteLine("Enter a city from which you would like to start:");
+                    startingCity = Console.ReadLine();
+                    route.Add(startingCity);
+                }
    
-                    destinationCity = startingCity;
+                destinationCity = startingCity;
                     
-                    do
-                    {
-                        destinationCities.Clear();
-                        Console.WriteLine();
-                        Console.WriteLine($"From {destinationCity} you can go to the following cities:");
-                        foreach (var line in readText)
-                        {
-                            var cities = line.Split('-');
-                            cities[0] = cities[0].Trim();
-                            cities[1] = cities[1].Replace("> ", "");
-                            if (cities[0].Contains(destinationCity))
-                            {
-                                destinationCities.Add(cities[1]);
-                                Console.WriteLine("- " + cities[1]);                                                                
-                            }
-                        }
-                        
-                        while (!destinationCities.Contains(destinationCity))
-                        {
-                            Console.WriteLine("Enter your next destination city from the list above:");
-                            destinationCity = Console.ReadLine();
-                        }
-                        
-                        route.Add(destinationCity);
-
-                    } while (destinationCity != startingCity);
-
+                do
+                {
+                    destinationCities.Clear();
                     Console.WriteLine();
-                    Console.WriteLine("Your chosen route is:");
-                    for(int i = 0; i < route.Count(); i++)
+                    Console.WriteLine($"From {destinationCity} you can go to the following cities:");
+                    foreach (var line in readText)
                     {
-                        if (i == route.Count() -1)
+                        var cities = line.Split('-');
+                        cities[0] = cities[0].Trim();
+                        cities[1] = cities[1].Replace("> ", "");
+                        if (cities[0].Contains(destinationCity))
                         {
-                            Console.WriteLine(route[i]);
+                            destinationCities.Add(cities[1]);
+                            Console.WriteLine("- " + cities[1]);                                                                
                         }
-                        else
-                        {
-                            Console.Write(route[i] + " -> ");
-                        }                        
                     }
+                        
+                    while (!destinationCities.Contains(destinationCity))
+                    {
+                        Console.WriteLine("Enter your next destination city from the list above:");
+                        destinationCity = Console.ReadLine();
+                    }
+                        
+                    route.Add(destinationCity);
 
-                    break;
-                default:
-                    break;
+                } while (destinationCity != startingCity);
+
+                Console.WriteLine();
+                Console.WriteLine("Your chosen route is:");
+                for(int i = 0; i < route.Count(); i++)
+                {
+                    if (i == route.Count() -1)
+                    {
+                        Console.WriteLine(route[i]);
+                    }
+                    else
+                    {
+                        Console.Write(route[i] + " -> ");
+                    }                        
+                }
             }
 
             Console.ReadKey();
