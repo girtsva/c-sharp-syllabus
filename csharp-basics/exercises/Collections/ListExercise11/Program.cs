@@ -10,19 +10,33 @@ namespace ListExercise11
     {
         static void Main(string[] args)
         {
-            //TODO: Create an List with string elements
+            List<string> foods = new List<string>();
 
-            //TODO: Add 10 values to list
+            foods.Add("Banana");
+            foods.Add("French fries");
+            foods.Add("Omelette");
+            foods.Add("Meatballs");
+            foods.Add("Cherries");
+            foods.Add("Broccoli");
+            foods.Add("Oatmeal");
+            foods.Add("Cheeseburger");
+            foods.Add("Beans");
+            foods.Add("Ice cream");
 
-            //TODO: Add new value at 5th position
+            foods.Insert(4, "Ketchup");
 
-            //TODO: Change value at last position (Calculate last position programmatically)
+            foods[foods.Count - 1] = "Cheese cake";
 
-            //TODO: Sort your list in alphabetical order
+            foods.Sort();
 
-            //TODO: Check if your list contains "Foobar" element
+            Console.WriteLine(foods.Contains("Foobar"));
 
-            //TODO: Print each element of list using loop
+            foreach (var food in foods)
+            {
+                Console.WriteLine(food);
+            }
+
+            Console.ReadKey();            
         }
     }
 }
