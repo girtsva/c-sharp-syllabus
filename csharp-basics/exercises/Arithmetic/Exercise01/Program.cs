@@ -2,7 +2,7 @@
 
 namespace Exercise01
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -12,13 +12,13 @@ namespace Exercise01
             int firstInt = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter the second integer value: ");
             int secondInt = Convert.ToInt32(Console.ReadLine());
-                        
-            bool CheckFifteen(int firstInt, int secondInt)
-            {
-                return firstInt == 15 || secondInt == 15 || firstInt + secondInt == 15 || firstInt - secondInt == 15 || secondInt - firstInt == 15;
-            }
 
             Console.WriteLine(CheckFifteen(firstInt, secondInt));
+        }
+
+        public static bool CheckFifteen(int firstInt, int secondInt)
+        {
+            return firstInt == 15 || secondInt == 15 || firstInt + secondInt == 15 || firstInt - secondInt == 15 || secondInt - firstInt == 15;
         }
     }
 }
