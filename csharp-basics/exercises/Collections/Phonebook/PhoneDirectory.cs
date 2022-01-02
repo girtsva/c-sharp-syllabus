@@ -11,7 +11,7 @@ namespace PhoneBook
             _data = new SortedDictionary<string, string>();
         }
 
-        private bool Find(string name)
+        public bool Find(string name)
         {
             return (_data.ContainsKey(name));            
         }
