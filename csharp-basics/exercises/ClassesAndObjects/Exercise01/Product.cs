@@ -8,20 +8,20 @@ namespace Exercise01
 {
     public class Product
     {
-        private string _name;
+        public string Name { get; private set; }
         public double Price { get; set; }
         public int Amount { get; set; }
 
         public Product(string name, double priceAtStart, int amountAtStart)
         {
-            _name = name;
+            Name = name;
             Price = priceAtStart;
             Amount = amountAtStart;
         }
 
         public void PrintProduct()
         {
-            Console.WriteLine($"{_name}, price {Price} EUR, amount {Amount} units");
+            Console.WriteLine($"{Name}, price {Price} EUR, amount {Amount} units");
         }
     }
 }
