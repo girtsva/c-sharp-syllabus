@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdApp", "AdApp\AdApp.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hierarchy", "Hierarchy\Hierarchy.csproj", "{EFB1FA9C-B13B-4DD7-A58F-B7FE7B61D8D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragRace.Tests", "DragRace.Tests\DragRace.Tests.csproj", "{D45088E7-DC96-46D3-ACAF-7B4432BAB72A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{EFB1FA9C-B13B-4DD7-A58F-B7FE7B61D8D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFB1FA9C-B13B-4DD7-A58F-B7FE7B61D8D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFB1FA9C-B13B-4DD7-A58F-B7FE7B61D8D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D45088E7-DC96-46D3-ACAF-7B4432BAB72A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D45088E7-DC96-46D3-ACAF-7B4432BAB72A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D45088E7-DC96-46D3-ACAF-7B4432BAB72A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D45088E7-DC96-46D3-ACAF-7B4432BAB72A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
