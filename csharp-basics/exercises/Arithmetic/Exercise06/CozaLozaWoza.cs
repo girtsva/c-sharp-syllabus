@@ -4,8 +4,6 @@ namespace Exercise06
 {
     public class CozaLozaWoza
     {
-
-
         public void PrintResult(int startNumber, int endNumber, int numbersPerLine)
         {
             string row = "";
@@ -28,19 +26,19 @@ namespace Exercise06
         {
             string transformed;
 
-            if (number % 105 == 0)
+            if (number % 7 == 0 && number % 5 == 0 && number % 3 == 0)
             {
                 transformed = "CozaLozaWoza";
             }
-            else if (number % 35 == 0)
+            else if (number % 7 == 0 && number % 5 == 0)
             {
                 transformed = "LozaWoza";
             }
-            else if (number % 21 == 0)
+            else if (number % 7 == 0 && number % 3 == 0)
             {
                 transformed = "CozaWoza";
             }
-            else if (number % 15 == 0)
+            else if (number % 5 == 0 && number % 3 == 0)
             {
                 transformed = "CozaLoza";
             }
