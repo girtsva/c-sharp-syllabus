@@ -7,11 +7,6 @@ namespace Exercise6.Tests
         private int[] _array1 = new int[10];
         private int[] _array2 = new int[10];
 
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
         public void FillArrayWithRandomNumbers_EmptyArray1_Array1ShouldBeFilled()
         {
