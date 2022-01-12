@@ -49,7 +49,15 @@ namespace Hierarchy
                     givenFood = new Vegetable(foodQuantity);
                 }
 
-                animals[animals.Count - 1].Eat(givenFood);
+                try
+                {
+                    animals[animals.Count - 1].Eat(givenFood);
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception.Message);
+                }
+
 
                 Console.WriteLine(animals[animals.Count - 1].ToString());
 

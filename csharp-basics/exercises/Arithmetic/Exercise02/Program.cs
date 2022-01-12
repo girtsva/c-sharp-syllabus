@@ -2,7 +2,7 @@
 
 namespace Exercise02
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -10,21 +10,14 @@ namespace Exercise02
 
             Console.WriteLine("Enter the integer value: ");
             int inputInt = Convert.ToInt32(Console.ReadLine());
-            
-            static void CheckOddEven(int inputInt)
-            {
-                if(inputInt % 2 == 0)
-                {
-                    Console.WriteLine("Even Number");
-                }
-                else
-                {
-                    Console.WriteLine("Odd Number");
-                }
-            }
 
-            CheckOddEven(inputInt);
+            Console.WriteLine(CheckOddEven(inputInt));
             Console.WriteLine("bye!");
+        }
+
+        public static string CheckOddEven(int inputInt)
+        {
+            return inputInt % 2 == 0 ? "Even Number" : "Odd Number";
         }
     }
 }

@@ -17,47 +17,11 @@ namespace Exercise06
 
             int startNumber = 1;
             int endNumber = 110;
-            string row = "";
+            int numbersPerLine = 11;
 
-            for (int i = startNumber; i <= endNumber; i++)
-            {
-                if (i % 105 == 0)
-                {
-                    row += "CozaLozaWoza ";
-                }
-                else if (i % 21 == 0)
-                {
-                    row += "CozaWoza ";
-                }
-                else if (i % 15 == 0)
-                {
-                    row += "CozaLoza ";
-                }
-                else if (i % 7 == 0)
-                {
-                    row += "Woza ";
-                }
-                else if (i % 5 == 0)
-                {
-                    row += "Loza ";
-                }
-                else if (i % 3 == 0)
-                {
-                    row += "Coza ";
-                }
-                else
-                {
-                    row += i + " ";
-                }
-                
-                if (i % 11 == 0)
-                {
-                    Console.WriteLine(row);
-                    row = "";
-                }
-            }
+            var cozaLozaWoza = new CozaLozaWoza();
 
-            Console.WriteLine(row);
+            cozaLozaWoza.PrintResult(startNumber, endNumber, numbersPerLine);
         }
     }
 }

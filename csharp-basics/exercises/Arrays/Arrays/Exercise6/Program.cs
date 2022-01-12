@@ -2,7 +2,7 @@
 
 namespace Exercise6
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -19,21 +19,41 @@ namespace Exercise6
             int[] array1 = new int[10];
             int[] array2 = new int[10];
 
-            for (int i = 0; i < array1.Length; i++)
-            {
-                Random rnd = new Random();
-                array1[i] = rnd.Next(1, 101);
-            }
+            array1 = FillArrayWithRandomNumbers(array1);
 
-            for (int i = 0; i < array2.Length; i++)
-            {
-                array2[i] = array1[i];
-            }
+            array2 = CopyArrayValues(array1, array2);
 
-            array1[array1.Length - 1] = -7;
+            ChangeLastValue(array1);
 
-            Console.WriteLine($"Array 2: {string.Join(", ", array1)}");
+            Console.WriteLine($"Array 1: {string.Join(", ", array1)}");
             Console.WriteLine($"Array 2: {string.Join(", ", array2)}");   
+        }
+
+        public static int[] FillArrayWithRandomNumbers(int[] array)
+        {
+            Random rnd = new Random();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = rnd.Next(1, 101);
+            }
+
+            return array;
+        }
+
+        public static int[] CopyArrayValues(int[] originalArray, int[] copyArray)
+        {
+            for (int i = 0; i < copyArray.Length; i++)
+            {
+                copyArray[i] = originalArray[i];
+            }
+
+            return copyArray;
+        }
+
+        public static void ChangeLastValue(int[] array)
+        {
+            array[array.Length - 1] = -7;
         }
     }
 }

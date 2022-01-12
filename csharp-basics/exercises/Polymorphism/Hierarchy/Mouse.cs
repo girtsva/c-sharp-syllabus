@@ -17,7 +17,7 @@ namespace Hierarchy
         {
             if (food is Meat)
             {
-                Console.WriteLine($"{GetType().Name}s are not eating that type of food!");
+                throw new ArgumentException($"{GetType().Name}s are not eating that type of food!");
             }
             else
             {

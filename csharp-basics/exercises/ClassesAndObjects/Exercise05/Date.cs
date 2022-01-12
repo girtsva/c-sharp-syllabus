@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise05
 {
-    class Date
+    public class Date
     {
         public int Day { get; private set; }
         public int Month { get; private set; }
